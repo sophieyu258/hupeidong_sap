@@ -3,6 +3,7 @@
 
 Now I add something in testBranch1
 
+Now I add something after testBranch1 pull request and merged to master
 
 Working on ubuntu-VirtualBox-sap
 
