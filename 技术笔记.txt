@@ -1,0 +1,125 @@
+
+20201205
+
+Working on ubuntu-VirtualBox-sap
+
+ubuntu , pw : ubuntu
+
+* Install IntelliJ IDEA on Ubuntu
+** Just search and Install IntelliJ IDEA from the Software Center
+
+* Debug Hygieia API projedt
+** Open/Import the maven project
+** Choose 'Run' or 'Debug', in config, select 'Application', and choose OpenJDK
+** Choose 'Main class' as 'com.capitalone.dashboard.Application'
+** Choose Debug'Application', then the API project is running and can be debugged
+
+* API calls classes and functions in hygieia-core project
+* I want to be able to debug the core code too
+** make a copy of api folder api_hb
+** 
+
+
+20201129
+
+* Install/run Hygieia
+
+https://www.cnblogs.com/duanxz/p/9909213.html
+
+** Install maven
+sudo apt install maven
+
+** npm
+Seems npm already exists
+
+** MongoDB
+*** check ubuntu version:
+lsb_release -a
+*** Install MongoDB Community Edition on Ubuntu
+
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+or (ubuntu package):
+
+sudo apt update
+sudo apt upgrade
+sudo apt install mongodb
+
+** Install Hygieia API
+
+https://hygieia.github.io/Hygieia/api.html
+
+git clone https://github.com/Hygieia/api.git
+cd api
+mvn install
+cd target
+java -jar api.jar
+
+The last command is the most simple version of:
+
+java -jar api.jar --spring.config.location=C:\[path to api.properties file] -Djasypt.encryptor.password=hygieiasecret
+
+It runs the api with no api.properties and uses all default values. Then open in browser to check it's running :   
+
+localhost:8080/api/ping
+
+
+** Install Github collector
+
+https://github.com/Hygieia/hygieia-scm-github-collector
+
+git clone https://github.com/Hygieia/hygieia-scm-github-collector.git
+cd hygieia-scm-github-collector
+mvn install
+cd target
+
+Need to config the properties file, otherwise it will throw exceptions : (to be done later)
+java -jar [collector name].jar --spring.config.name=github --spring.config.location=[path to application.properties file]
+
+
+** Install Hygieia UI 
+
+https://github.com/Hygieia/UI
+
+git clone https://github.com/Hygieia/UI.git
+cd UI
+npm install
+sudo npm install -g @angular/cli@8.0.3
+ng version
+sudo npm install -g gulp
+gulp -v
+npm install gulp --save-dev
+gulp build
+
+->get 'No gulpfile found' error
+
+*** try another repo : 
+
+git clone https://github.com/Hygieia/Hygieia.git
+npm install
+npm install gulp --save-dev
+gulp build
+
+-> get "ReferenceError: primordials is not defined" error
+
+Use the method in this article to fix the above error:
+https://timonweb.com/javascript/how-to-fix-referenceerror-primordials-is-not-defined-error/
+
+In the same directory where you have package.json create an npm-shrinkwrap.json file with the following contents:
+
+{
+  "dependencies": {
+    "graceful-fs": {
+        "version": "4.2.2"
+     }
+  }
+}
+
+gulp serve
+
+works!
+
+
+
+
+
