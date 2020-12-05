@@ -1,9 +1,10 @@
 
 20201205
 
-Now I add something in testBranch1
+* Run github collector
+** put the application.properties file in hygieia/hygieia-scm-github-collector/target
+** java -jar github-scm-collector.jar
 
-Now I add something after testBranch1 pull request and merged to master
 
 Working on ubuntu-VirtualBox-sap
 
