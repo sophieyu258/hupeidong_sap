@@ -1,4 +1,102 @@
 
+20201210
+
+* Run complete hygieia using docker-compose
+
+user1 / 123456
+
+github token
+
+35a99406953e4654f82030cb5f0a3027030319a1
+
+20201209
+
+* 成功的方法
+
+entre jenkins container, and install maven there. Then don't use Jenkinsfile, use 'FreeStyle' project, and 'mvn package'
+
+* Build a maven project using Jenkins
+
+https://www.jenkins.io/doc/tutorials/build-a-java-app-with-maven/
+
+https://github.com/sophieyu258/simple-java-maven-app.git
+
+** Install Docker plugins in 'Dashboard'->'Manage Jenkins'->'Manage Plugins'
+
+sudo docker run -d -p 49002:8080 --privileged -t jenkins/jenkins
+
+sudo docker container exec -it d100400b7b2b bash
+
+** enter docker container as root :
+
+sudo docker container exec -it -u root d100400b7b2b bash
+
+admin
+4a162a8cfa8349d38d26857c683562cd
+
+** still get 'docker: not found' error in build
+
+** install docker inside jenkins container (fail, no use)
+
+apt-get update && \
+apt-get -y install apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common && \
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+   $(lsb_release -cs) \
+   stable" && \
+apt-get update && \
+apt-get -y install docker-ce
+
+
+* 查看cpu类型
+
+sudo lshw | grep -i cpu
+
+
+
+20201208 
+
+* 成功的安装jenkins docker :
+
+https://wiki.jenkins.io/display/JENKINS//Installing+Jenkins+with+Docker
+
+sudo docker run -d -p 49001:8080 -t jenkins/jenkins
+
+admin
+7885269622cd404397ff725c73c72d5b
+
+* Install/run jenkins in docker :
+
+https://www.jenkins.io/doc/book/installing/docker/
+
+sudo docker run --name jenkins-docker --rm --detach \
+  --privileged --network jenkins --network-alias docker \
+  --env DOCKER_TLS_CERTDIR=/certs \
+  --volume jenkins-docker-certs:/certs/client \
+  --volume jenkins-data:/var/jenkins_home \
+  --publish 2376:2376 docker:dind
+  
+  sudo docker run --name jenkins-docker --rm --detach   --privileged --network jenkins --network-alias docker   --env DOCKER_TLS_CERTDIR=/certs   --volume jenkins-docker-certs:/certs/client   --volume jenkins-data:/var/jenkins_home -p 8888:8080  --publish 2376:2376 docker:dind
+
+** enter docker container :
+
+sudo docker container exec -it jenkins-docker sh
+
+** find docker container's listening ports :
+
+docker inspect -f '{{.State.Pid}}'
+126181
+sudo nsenter -t 126181 -n netstat
+sudo nsenter -t 126181 -n ss -ltpn
+
+
+
+
 20201205
 
 * Run github collector
