@@ -1,0 +1,119 @@
+
+20201212
+
+Next goal : Show 'Build Time' and 'Failed rate' in Build Widget
+
+Plan : 
+- run/debug jenkins collector in IntelliJ
+- Figure out how jenkins data is retrieved and saved/passed to hygieia
+- Figure out how Build Widget shows data
+
+20201207
+
+* VirtualBox -> Settings -> Network, choose 'Bridged Adapter', then the VM will have IP like 192.168.1.6
+
+20201205
+
+Next goal : collector hygieia to Jenkins
+
+github token : 
+
+85cf9ad1a03c0521f053da7660eb833a1c9de785
+
+
+20201203
+
+health unit :
+
+Dec 7 & 11 519-663-5317 x 9010 m-f 8-4, x 9008 
+
+back seat, opposit side of driver, drive through
+
+20201130
+
+Hygieia API & UI successfully built and run
+
+UI login : bhang/123456
+
+
+20201129
+
+https://us04web.zoom.us/s/
+
+2396277894
+
+?pwd=
+
+dGg3bC9VK3JwQzMvQzViOFl5dXVhQT09
+
+#success
+
+teamviewer
+665879281
+pw : pdhb2020
+
+ubuntu pw : ubuntu
+
+https://jira.eurekacloud.io/browse/EDE-1384
+
+ubuntu
+
+IntelliJ
+
+20201124
+
+SAP
+
+jira - bug tracking
+prometheus/grafana
+
+https://hygieia.github.io/ExecDashboard/Portfolio_Metrics.html
+
+
+
+
+20201115
+
+jsonnet to yaml
+
+
+
+s0s01019
+
+Spring Boot
+
+https://www.yiibai.com/spring-boot
+
+
+20201018
+
+install ubuntu in virtualbox :
+Ubuntu1 , user : bhang, pw : hello
+
+这个docker教程不错
+
+http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html
+
+https://www.savvynewcanadians.com/best-usd-dollar-bank-account-options-canada/
+
+20201017
+
+kubernetes / paltform as a service / paas
+
+kuberctl get deploy -n platform
+
+jenkins
+
+https://groovy-lang.org/
+
+
+hu peidong's company : 
+
+https://www.commscope.com/
+
+ECO management
+cwmp
+TR-069-CWMP Device Management 
+
+https://locust.io/
+

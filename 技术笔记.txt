@@ -9,6 +9,29 @@ github token
 
 35a99406953e4654f82030cb5f0a3027030319a1
 
+* history |grep github-collector
+
+git clone https://github.com/Hygieia/hygieia-scm-github-collector.git
+cd hygieia-scm-github-collector/
+sudo docker build -t github-collector .
+sudo docker run -e SKIP_PROPERTIES_BUILDER=true -v /home/ubuntu/hygieia-scm-github-collector/sap:/hygieia/config github-collector
+
+* build jenkins docker image
+
+git clone https://github.com/Hygieia/hygieia-build-jenkins-collector.git
+cd hygieia-build-jenkins-collector/
+sudo mvn install
+sudo docker build -t jenkins-collector .
+sudo docker run -e SKIP_PROPERTIES_BUILDER=true -v /home/ubuntu/hygieia-build-jenkins-collector/sap:/hygieia/config jenkins-collector
+
+** jenkins build graph成功！
+Notice:
+'Jenkins'->'Dashboard'->'configuration'->'Jenkins Location(Jenkins URL)' must be the same as that in application.properties : 
+jenkins.servers[0]=http://172.17.0.1:49001
+
+
+
+
 20201209
 
 * 成功的方法
@@ -69,6 +92,7 @@ sudo docker run -d -p 49001:8080 -t jenkins/jenkins
 
 admin
 7885269622cd404397ff725c73c72d5b
+apiToken(key) : 1165e8fa5f10b75348a59d3336821154e3
 
 * Install/run jenkins in docker :
 
