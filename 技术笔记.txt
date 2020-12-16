@@ -69,26 +69,10 @@ sudo docker container exec -it d100400b7b2b bash
 
 sudo docker container exec -it -u root d100400b7b2b bash
 
+49002
 admin
 4a162a8cfa8349d38d26857c683562cd
 
-** still get 'docker: not found' error in build
-
-** install docker inside jenkins container (fail, no use)
-
-apt-get update && \
-apt-get -y install apt-transport-https \
-     ca-certificates \
-     curl \
-     gnupg2 \
-     software-properties-common && \
-curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
-add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
-   $(lsb_release -cs) \
-   stable" && \
-apt-get update && \
-apt-get -y install docker-ce
 
 
 * 查看cpu类型
