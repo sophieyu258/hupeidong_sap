@@ -1,4 +1,19 @@
 
+20201215
+
+
+jenkins : localhost:49001 , docker container a3f84d46c3b0
+admin
+7885269622cd404397ff725c73c72d5b
+apiToken(key) : 1165e8fa5f10b75348a59d3336821154e3
+
+20201214
+
+goal : hygieia pipeline
+
+teamviewer id is chagned to 697216359
+pw : pdhb2020
+
 20201212
 
 Next goal : Show 'Build Time' and 'Failed rate' in Build Widget

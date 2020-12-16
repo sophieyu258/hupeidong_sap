@@ -1,4 +1,19 @@
 
+
+20201213 
+
+* Run jenkins-collector in IntelliJ
+** copy the source code to another folder, e.g., /home/ubuntu/mytest/hygieia-build-jenkins-collector
+** open project in IntelliJ from the above folder. VCS seems causing problem if we use project in the git repo
+** put application.properties in that folder too, since it is the default working directory
+
+* 
+* put breakpoints in DefaultHudsonClient.java
+** can get REST call url like :
+
+http://172.17.0.1:49001/job/MavenTest1/17/api/json?tree=number,url,timestamp,duration,building,result,culprits[fullName],changeSets[items[user,author[fullName],revision,id,msg,timestamp,date,paths[file]],kind],changeSet[items[user,author[fullName],revision,id,msg,timestamp,date,paths[file]],kind,revisions[module,revision]],actions[lastBuiltRevision[SHA1,branch[SHA1,name]],remoteUrls]
+
+
 20201210
 
 * Run complete hygieia using docker-compose
