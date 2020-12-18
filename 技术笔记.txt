@@ -1,4 +1,56 @@
 
+20201217
+
+* Try Hygieia Executive 
+
+git clone https://github.com/Hygieia/ExecDashboard.git
+
+** db setup
+
+https://hygieia.github.io/ExecDashboard/EXECDatabase_Setup.html
+
+> use analyticsdb
+> db.createUser(
+            {
+              user: "dashboarduser",
+              pwd: "dbpassword",
+              roles: [
+              {role: "readWrite", db: "analyticsdb"}
+              ]
+            })
+			
+Error: couldn't add user: Use of SCRAM-SHA-256 requires undigested passwords
+
+> db.createUser( {
+              user: "dashboarduser",
+              pwd: "dbpassword",
+              roles: [
+              {role: "readWrite", db: "analyticsdb"}
+              ],
+			  mechanisms:[  "SCRAM-SHA-1" ]     })
+
+成功！
+
+** ExeDashboard setup
+
+cd ExeDashboard
+mvn clean install
+sudo docker-compose up
+
+
+20201216 
+
+pipeline
+
+score
+
+cloud
+
+20201215
+
+* restart the services : just use 
+
+sudo docker start 
 
 20201213 
 
