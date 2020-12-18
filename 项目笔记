@@ -1,6 +1,11 @@
 
-20201215
+20201218
 
+* Hygieia admin user :
+
+admin / 123456
+
+20201215
 
 jenkins : localhost:49001 , docker container a3f84d46c3b0
 admin
