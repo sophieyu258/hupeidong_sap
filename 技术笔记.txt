@@ -1,4 +1,44 @@
 
+20201218
+
+* https://github.com/Hygieia/Hygieia/issues/1175
+
+Current pipeline configuration widget allows to choose the environments for DEV, QA,INT,PERF,..etc. Environment drop down will be populated with the values from deploy widget (if using uDeploy collector or Hygieia Jenkins publisher data will be pushed to deploy widget)
+
+* Install Hygieia-Jenkins Plugin
+
+https://github.com/Hygieia/Hygieia/blob/gh-pages/pages/hygieia/hygieia-jenkins-plugin/hygieia-jenkins-plugin.md
+
+** 'mvn test' fails! 
+
+Google said 'we still get some issues with java 10, prefer java 8 to build/run jenkins in the meantime'
+
+** Install java 8. jdk are installed in /usr/lib/jvm
+
+sudo apt install openjdk-8-jdk-headless
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+
+env | grep JAVA
+
+'mvn test' succeed!
+
+** mvn clean package
+
+hygieia-publisher.hpi generated
+
+** install plugin in jenkins
+
+Manage Jenkins -> Manage Plugins -> Advanced -> Upload plugin
+
+** restart jenkins
+
+localhost:49001/restart
+
+
+
+
+
 20201217
 
 * Try Hygieia Executive 
