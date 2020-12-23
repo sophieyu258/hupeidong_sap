@@ -1,4 +1,41 @@
 
+20201221
+
+* Fork API to my own repo
+
+https://github.com/sophieyu258/api.git
+
+* Mock API
+
+20201220
+
+* 'Hygieia Server URL' must not add last /. e.g., http://172.20.0.3:8080/api
+
+* In a Build job, add 'Post-build Actions', then the 'Hygieia publisher settings' will appear
+
+* it seems udeploy or xldeploy is required?
+
+
+20201219
+
+* Manage Jenkins -> Config Jenkins -> Global Hygieia Publisher Settings
+* After config the above page, use 'Test Connection'
+
+traceroute
+ip addr
+
+sudo docker inspect a3f84d46c3b0 -f "{{json .NetworkSettings.Networks }}"
+
+* run jenkins on host IP so that it can access hygieia api
+
+sudo docker run --network host --name jenkins-hello -d -v $PWD/jenkins:/var/jenkins_home -t jenkins/jenkins
+
+http://localhost:8080
+http://10.0.2.15:8080
+admin
+9c2b87cea8e14e3aa7ac3cb09c85fbdd
+
+
 20201218
 
 * https://github.com/Hygieia/Hygieia/issues/1175
