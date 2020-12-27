@@ -17,11 +17,6 @@ https://api.github.com/repos/sophieyu258/hupeidong_sap/commits?sha=master&since=
 
 db.dashboards.find()
 
-{ "_id" : ObjectId("5fc5af9a10f82d373b8d4eed"), "_class" : "com.capitalone.dashboard.model.Dashboard", "template" : "widgets", "title" : "my first team dashboard", "widgets" : [ { "_id" : ObjectId("5fcbf6c5bac0c3711c514bb9"), "name" : "repo", "componentId" : ObjectId("5fc5af9a10f82d373b8d4eec"), "options" : { "id" : "repo0" } } ], "owners" : [ { "username" : "bhang", "authType" : "STANDARD" } ], "type" : "Team", "application" : { "name" : "Application1", "components" : [ DBRef("components", ObjectId("5fc5af9a10f82d373b8d4eec")) ] }, "validServiceName" : false, "validAppName" : false, "remoteCreated" : false, "scoreEnabled" : true, "scoreDisplay" : "WIDGET", "activeWidgets" : [ "build", "feature", "performance", "repo", "pipeline", "log" ], "createdAt" : NumberLong("1606791066042"), "updatedAt" : NumberLong("1606791066133") }
-{ "_id" : ObjectId("5fe6c30a7b36681873b9ea81"), "_class" : "com.capitalone.dashboard.model.Dashboard", "template" : "widgets", "title" : "mydashboard1", "widgets" : [ { "_id" : ObjectId("5fe7fd8d7b36684845271258"), "name" : "deploy", "componentId" : ObjectId("5fe6c30a7b36681873b9ea80"), "options" : { "id" : "deploy0" } }, { "_id" : ObjectId("5fe8be2a7b36685109409ca4"), "name" : "pipeline", "options" : { "id" : "pipeline0" } } ], "owners" : [ { "username" : "user1", "authType" : "STANDARD" } ], "type" : "Team", "application" : { "name" : "myapp1", "components" : [ DBRef("components", ObjectId("5fe6c30a7b36681873b9ea80")) ] }, "validServiceName" : false, "validAppName" : false, "remoteCreated" : false, "scoreEnabled" : true, "scoreDisplay" : "WIDGET", "activeWidgets" : [ "build", "chatops", "cloud", "codeanalysis", "deploy", "feature", "monitor", "log", "pipeline", "rally", "repo", "team" ], "createdAt" : NumberLong("1608958730323"), "updatedAt" : NumberLong("1608958730432") }
-
-
-
 
 20201226
 
