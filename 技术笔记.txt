@@ -1,7 +1,21 @@
 
 20201227
 
+* Repo widget (github)
+
+http://localhost:3000/api/collector/collectorId/5fcbf3e0bac0c374b78b60cc
+http://localhost:3000/api/encrypt/
+http://localhost:3000/api/collector/item
+http://localhost:3000/api/dashboard/5fe6c30a7b36681873b9ea81/widget/5fe8d56f7b36685109409cad
+http://localhost:3000/api/commit?componentId=5fe6c30a7b36681873b9ea80&numberOfDays=14
+http://localhost:3000/api/gitrequests/type/pull/state/all?componentId=5fe6c30a7b36681873b9ea80&numberOfDays=14
+http://localhost:3000/api/collector/item/component/5fe6c30a7b36681873b9ea80?type=scm
+
+https://api.github.com/repos/sophieyu258/hupeidong_sap/commits?sha=master&since=2020-12-27T15:42Z
+
 * pineline tab
+
+http://localhost:3000/api/deploy/status/5fe6c30a7b36681873b9ea80
 
 
 
