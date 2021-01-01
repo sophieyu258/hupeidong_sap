@@ -15,7 +15,8 @@ https://api.github.com/repos/sophieyu258/hupeidong_sap/commits?sha=master&since=
 
 * pineline tab
 
-db.dashboards.find()
+http://localhost:3000/api/deploy/status/5fe6c30a7b36681873b9ea80
+
 
 
 20201226
