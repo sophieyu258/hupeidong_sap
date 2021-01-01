@@ -361,6 +361,10 @@ cd UI
 npm install
 sudo npm install -g @angular/cli@8.0.3
 ng version
+(
+output :
+
+)
 sudo npm install -g gulp
 gulp -v
 npm install gulp --save-dev
