@@ -1,4 +1,6 @@
 
+http://localhost:4200/api/collector/item/type/searchField/Deployment?search=de&searchField=description&size=20
+
 20201227
 
 * Repo widget (github)
