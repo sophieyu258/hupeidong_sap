@@ -1,4 +1,11 @@
 
+20210107
+
+http://localhost:4200/api/commit/?componentId=5ff20106a12c26abe28bfed2&numberOfDays=14
+http://localhost:4200/api/gitrequests/type/pull/state/all/?componentId=5ff20106a12c26abe28bfed2&numberOfDays=14
+http://localhost:4200/api/gitrequests/type/issue/state/all/?componentId=5ff20106a12c26abe28bfed2&numberOfDays=14
+
+
 http://localhost:4200/api/collector/item/type/searchField/Deployment?search=de&searchField=description&size=20
 
 20201227
