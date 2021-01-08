@@ -7,6 +7,9 @@ http://localhost:4200/api/gitrequests/type/issue/state/all/?componentId=5ff20106
 
 
 http://localhost:4200/api/collector/item/type/searchField/Deployment?search=de&searchField=description&size=20
+20210102
+
+http://localhost:3000/api/dashboard/5fe6c30a7b36681873b9ea81
 
 20201227
 
@@ -386,6 +389,20 @@ sudo npm install -g @angular/cli@8.0.3
 ng version
 (
 output :
+
+Angular CLI: 8.0.3
+Node: 14.15.1
+OS: linux x64
+Angular: undefined
+... 
+
+Package                      Version
+------------------------------------------------------
+@angular-devkit/architect    0.800.3 (cli-only)
+@angular-devkit/core         8.0.3 (cli-only)
+@angular-devkit/schematics   8.0.3 (cli-only)
+@schematics/angular          8.0.3 (cli-only)
+@schematics/update           0.800.3 (cli-only)
 
 )
 sudo npm install -g gulp
