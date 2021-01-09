@@ -1,4 +1,11 @@
 
+tue 8:30 dealer colorworks
+
+20210107
+
+Problems : 
+- It seems the new UI is not working well. GitHub info is not really added. Only the team dashboards created using old UI (run by docker) shows data, and cannot be changed. The new 'Code Repo' widget does not save the github info input into a collectorItem.
+
 20210106
 
 Setup demo : git , jenkins , build

@@ -297,11 +297,6 @@ sudo nsenter -t 126181 -n ss -ltpn
 
 20201205
 
-* Run github collector
-** put the application.properties file in hygieia/hygieia-scm-github-collector/target
-** java -jar github-scm-collector.jar
-
-
 Working on ubuntu-VirtualBox-sap
 
 ubuntu , pw : ubuntu
@@ -376,6 +371,10 @@ cd target
 
 Need to config the properties file, otherwise it will throw exceptions : (to be done later)
 java -jar [collector name].jar --spring.config.name=github --spring.config.location=[path to application.properties file]
+
+* Run github collector
+** put the application.properties file in hygieia/hygieia-scm-github-collector/target
+** java -jar github-scm-collector.jar
 
 
 ** Install Hygieia UI 
