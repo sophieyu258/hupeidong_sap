@@ -1,7 +1,65 @@
 
+20210110
+
+* set the collector scan time to 15 seconds :
+in application.properties, set this value :
+
+# Collector schedule (required)
+# github.cron=0 0/5 * * * *
+github.cron=0/15 * * * * *
+
+cCronSequenceGenerator is used. explaination of the expression is here :
+https://www.baeldung.com/cron-expressions
+
+
+* run jenkins collector in docker 
+
+sudo docker run -e SKIP_PROPERTIES_BUILDER=true -v /home/ubuntu/hygieia-build-jenkins-collector/sap:/hygieia/config jenkins-collector
+
 20210109
 
+* run jenkins collector (failed)
 
+cd hygieia-build-jenkins-collector/target
+java -jar jenkins-build-collector.jar --spring.config.name=jenkins --spring.config.location=/home/ubuntu/hygieia-build-jenkins-collector/sap/application.properties
+
+* jenkins docker :
+http://localhost:49001/
+admin
+1cd102a98d9c4dcb8fa88cdded63709c
+
+* solve github not showing data issue in new UI 
+- find the entry for the dashboard in mongo collection 'components'
+- copy the SCM definition from a working dashboard
+
+"SCM" : [ 
+            {
+                "_id" : ObjectId("5fd2602202743900081693fe"),
+                "enabled" : true,
+                "errors" : [ 
+                    {
+                        "errorCode" : "Unreachable",
+                        "errorMessage" : "https://github.com/sophieyu258/hupeidong_sap",
+                        "timestamp" : NumberLong(1608162044356)
+                    }
+                ],
+                "pushed" : false,
+                "collectorId" : ObjectId("5fc9daec46e0fb00062b5798"),
+                "lastUpdated" : NumberLong(1608161702456),
+                "options" : {
+                    "password" : "",
+                    "personalAccessToken" : "ERROR",
+                    "branch" : "master",
+                    "userID" : "",
+                    "url" : "https://github.com/sophieyu258/hupeidong_sap"
+                }
+            }
+        ],
+
+- use mongo GUI tool Robo 3T, add the SCM to the "collectorItems" of the dashboard using 'Edit Document'
+		
+https://github.com/peidong-hu/api.git
+21d38d28e69157b5cf4e9c290825b5395a681957		
 
 20210107
 
