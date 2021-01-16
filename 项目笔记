@@ -1,4 +1,14 @@
 
+20210113
+
+697216359 - VM with VPN
+721907207 - my VM
+
+Investigate 
+- java (springboot) call Prometheus API
+- use Go to write a service
+- Prometheus only has REST API? Any java or go native wrap lib?
+
 20210109
 
 peidong.hu2@gmail.com
