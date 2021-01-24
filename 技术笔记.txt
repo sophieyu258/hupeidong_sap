@@ -1,7 +1,12 @@
 
-20210102
+20210124
 
-http://localhost:3000/api/dashboard/5fe6c30a7b36681873b9ea81
+my vm grafana API key
+
+eyJrIjoicnRxNmptVFoxeXlOb1h1Q25rUHpacEJZeEZ6a2FSNU4iLCJuIjoibXl0ZXN0a2V5IiwiaWQiOjF9
+
+curl -H "Authorization: Bearer eyJrIjoicnRxNmptVFoxeXlOb1h1Q25rUHpacEJZeEZ6a2FSNU4iLCJuIjoibXl0ZXN0a2V5IiwiaWQiOjF9" http://localhost:3000/api/dashboards/home
+
 
 20201227
 
