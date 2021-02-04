@@ -1,0 +1,34 @@
+
+20210203
+
+* 让kubectl使用其他的cluster
+
+cd .kube
+mv config config-uat
+mv config-black-cluster config
+
+* install prometheus and grafana in kubernetes cluster
+
+https://www.magalix.com/blog/monitoring-of-kubernetes-cluster-through-prometheus-and-grafana
+
+* decode base64 
+
+echo YWRtaW4= | base64 --decode
+
+
+
+20210201 胡用的命令
+
+kubectl get pods -n uat-eureka |grep report
+kubectl exec -it dev-ci-report-6cbb6d996f-n5xfs -- bash -nat-eureka
+kubectl exec -it dev-ci-report-6cbb6d996f-n5xfs -n uat-eureka -- bash
+kubectl exec -it dev-ci-report-6cbb6d996f-n5xfs -n uat-eureka -- sh
+kubectl get ns
+vi /tmp/ubuntu.yaml
+kubectl apply -f /tmp/ubuntu.yaml -n testing
+kubectl get pods -n testing
+kubectl exec -it ubuntu -n testing -- bash
+kubectl cp ubuntu:/tmp/report.db . -n testing
+kubectl cp ubuntu:tmp/report.db report.db -n testing
+
+
