@@ -1,4 +1,194 @@
 
+20210207
+
+* start telepresence to debug sql-exporter
+
+telepresence --namespace uat-eureka --swap-deployment prom-sql-exporter  --env-json sql-exporter.json
+
+* To go back to real sql-exporter, stop telepresence, then delete the 'virtual pod'
+
+kubectl delete pod prom-sql-exporter-46c62e700b0440bfabed5c9eb9049781-74bb4558dxvh -n uat-eureka
+
+* normal sql-exporter logs
+
+ubuntu@ubuntu-VirtualBox-sap:~/prom-sql-exporter-poc/sql_exporter$ kubectl logs prom-sql-exporter-6b9bb47f74-dltsz -n uat-eureka
+{"build_context":"(go=go1.13.5, user=, date=)","caller":"level.go:63","msg":"Starting sql_exporter","ts":"2021-02-08T03:31:00.48266518Z","version_info":"(version=, branch=, revision=)"}
+{"caller":"level.go:63","job":"master-nodes","level":"debug","msg":"Starting","ts":"2021-02-08T03:31:00.48344875Z"}
+{"caller":"level.go:63","level":"info","listenAddress":":9237","msg":"Listening","ts":"2021-02-08T03:31:00.483631029Z"}
+{"caller":"level.go:63","job":"master-nodes","level":"debug","msg":"Running Query","query":"ut_coverage","ts":"2021-02-08T03:31:00.491146375Z"}
+{"caller":"level.go:63","job":"master-nodes","level":"debug","msg":"Query finished","query":"ut_coverage","ts":"2021-02-08T03:31:00.493487662Z"}
+{"caller":"level.go:63","job":"master-nodes","level":"debug","msg":"Sleeping until next run","sleep":"1m0s","ts":"2021-02-08T03:31:00.493529291Z"}
+
+
+* how to get the config/deployment/service settings of an existing pod/service?
+
+kubectl get configmap -n devops-dash
+kubectl edit cm prometheus-hybrid-config -n devops-dash
+
+kubectl get services -n devops-dash
+kubectl edit service prometheus-hybrid -n devops-dash
+
+kubectl edit pod prometheus-server-hybrid-0 -n devops-dash
+
+
+
+* find prometheus pod IP and service name
+
+kubectl get pods -n devops-dash -o wide
+
+> prometheus-server-hybrid-0   2/2     Running   0          13h   100.96.8.14   ip-10-250-25-154.us-west-1.compute.internal   <none>           <none>
+
+* find prometheus service info
+
+kubectl get services -n devops-dash
+
+> prometheus-hybrid   ClusterIP   100.70.36.121   <none>        9090/TCP   23h
+
+* in cluster ubuntu, test prometheus is accessible :
+
+wget 100.96.8.14:9090/targets
+wget 100.70.36.121:9090/targets
+wget http://prometheus-hybrid.devops-dash.svc.cluster.local:9090
+
+* install grafana
+
+- download default configmap file from :
+https://gist.githubusercontent.com/buo/a324edf9d22d0a0a1c3043ded79052b2/raw/3b18c370820b915831164de0847f4ac240992288/grafana-config.yml
+
+- add namespace
+
+metadata:
+  name: grafana-config
+  namespace: devops-dash
+
+- create configmap in kube
+
+kubectl create -f grafana-config.yml
+
+- check configmap correctly created
+
+kubectl get cm -n devops-dash
+
+- download deployment file from 
+
+https://devopscube.com/setup-grafana-kubernetes/
+
+- edit the file to change namespace and configmap, then create
+
+kubectl create -f deployment.yaml
+
+- check if the pod is created 
+
+kubectl get pods -n devops-dash
+
+> grafana-f4bb94456-s4brz      1/1     Running   0          74s
+
+- check using port-forward
+
+kubectl port-forward -n devops-dash grafana-f4bb94456-s4brz 3000
+
+- access localhost:3000, and set password
+
+admin
+123456
+
+- create a service.yaml 
+
+Notice to use ClusterIP, not NodePort
+
+- and run 
+
+kubectl create -f service.yaml
+
+
+
+20210206
+
+kubectl exec -it ubuntu sh 
+kubectl port-forward -n devops-dash prometheus-server-hybrid-0 9090
+kubectl describe pod prom-sql-exporter-db8c9974d-4mxsz -n uat-eureka
+
+* view a configmap 
+- find the configmap name in its yml, or use command :
+
+kubectl get configmap -n uat-eureka
+
+- then
+
+kubectl describe cm sql-exporter-config -n uat-eureka
+
+* apply the configmap
+
+kubectl apply -f configmap.yml -n uat-eureka
+
+!!! pay attention to the spaces used in new lines in configmap.yml, they must be exactly the same as the examples
+
+* restart (delete then let it auto restart)
+
+kubectl delete pod prom-sql-exporter-db8c9974d-4mxsz -n uat-eureka
+
+* check errors
+
+kubectl describe pod prom-sql-exporter-db8c9974d-cxxlr -n uat-eureka
+kubectl logs prom-sql-exporter-db8c9974d-cxxlr -n uat-eureka
+
+* make sure sql-exporter-service is running
+
+kubectl get svc -n uat-eureka | grep sql
+kubectl get endpoints sql-exporter-service -n uat-eureka
+
+* if it is not, apply it
+
+kubectl apply -f sql-exporter-svc.yaml -n uat-eureka
+
+* in cluster ubuntu, test sql-exporter-service is accessible :
+
+wget http://sql-exporter-service.uat-eureka.svc.cluster.local:9237
+
+* after sql-exporter is running, port-forward prometheus to test
+
+kubectl port-forward -n devops-dash prometheus-server-hybrid-0 9090
+
+
+
+
+* create a service for sql-exporter so that prometheus can add it without IP
+
+kubectl get svc -n uat-eureka
+ 1579  kubectl get svc rectify -o yaml -n uat-eureka > sql-exporter-svc.yaml
+ 1580  vi sql-exporter-svc.yaml 
+ 1581  ls
+ 1582  vi deployment.yml 
+ 1583  vi sql-exporter-svc.yaml 
+ 1584  kubectl apply -f sql-exporter-svc.yaml -n uat-eureka
+ 1585  vi sql-exporter-svc.yaml 
+ 1586  kubectl get endpoints sql-exporter-service -n uat-eureka
+ 1587  kubectl get pods -o wide -n uat-eureka |grep sql
+ 1588  kubectl port-forward -n uat-eureka sql-exporter-service 9237
+
+* apply configmap for prometheus
+
+kubectl apply -f prometheus-config.yml -n devops-dash
+ 1567  kubectl get cm -n kube-system
+ 1568  kubectl edit cm prometheus-prometheus -n kube-system
+
+kubectl edit statefulset prometheus-server-hybrid  -n devops-dash
+ 1547  ls
+ 1548  kubectl delete -f ./service-pod/prometheus.yaml -n devops-dash
+ 1549  vi service-pod/prometheus.yaml 
+ 1550  kubectl apply -f service-pod/prometheus.yaml -n devops-dash
+ 1551  kubectl get pods -n devops-dash
+ 1552  vi service-pod/prometheus.yaml 
+ 1553  kubectl get sc
+ 1554  kubectl get pods -n devops-dash
+ 1555  kubectl describe pod prometheus-server-hybrid-0 -n devops
+ 1556  kubectl describe pod prometheus-server-hybrid-0 -n devops-dash
+ 1557  kubectl logs pod prometheus-server-hybrid-0 -n devops-dash
+ 1558  kubectl logs prometheus-server-hybrid-0 -n devops-dash
+ 1559  kubectl logs prometheus-server-hybrid-0 -c prometheus-server -n devops-dash
+
+
+
 20210203
 
 * 让kubectl使用其他的cluster
@@ -15,7 +205,13 @@ https://www.magalix.com/blog/monitoring-of-kubernetes-cluster-through-prometheus
 
 echo YWRtaW4= | base64 --decode
 
+* access prometheus in kubernetes cluster
 
+kubectl port-forward -n prometheus prometheus-prometheus-prometheus-oper-prometheus-0 9090
+
+* access grafana in kubernetes cluster
+
+kubectl port-forward -n prometheus prometheus-grafana-7789c77d9d-rbxhk 3000
 
 20210201 胡用的命令
 

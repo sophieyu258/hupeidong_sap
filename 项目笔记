@@ -1,4 +1,26 @@
 
+20210206
+
+1) unit test coverage (~80% with timestamp) metrics (if can't find it, generate fake ones), NOTES, understand better how query work with prometheus data formate
+2) install grafana connect to prometheus in devops-dash namespace
+3) create dashbaord and then create panel in the dashboard to display trend graph, vertical bar
+
+
+20210205
+
+New plan :
+
+- find a prometheus exporter that can retrieve data from postgres db using SQL
+- get some data and show in grafana
+
+20210204
+
+Plan :
+
+- insall pushgateway in k8s
+- kuberctl port-forward pushgateway so that is it accessible on localhost
+- run ReportService locally and push to pushgateway whenever 'uploadreport' is called, or daily-report is run
+
 20200123
 
 JetBrains account
