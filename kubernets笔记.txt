@@ -1,4 +1,24 @@
 
+20210215
+
+* stop a pod : it is impossible to stop a pod, but we can set its deplyment replicas to 0
+
+kubectl get deployment -n prometheus
+
+kubectl scale --replicas=0 deployment/prom-sql-exporter -n prometheus
+
+* then we can set replicas=1 to restart the pod
+
+kubectl scale --replicas=1 deployment/prom-sql-exporter -n prometheus
+
+* however, it seems that the pod is changed to a new one. It's actually the same as using 
+
+kubectl delete
+
+the only useful thing is that we can simulate the pod downtime using replicas=0
+
+
+
 20210207
 
 * start telepresence to debug sql-exporter

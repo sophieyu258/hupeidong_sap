@@ -1,4 +1,38 @@
 
+20210224
+
+* check kubeconfig-ci.yaml
+
+
+20210222
+
+* deploy Unit Test coverage metrics monitoring to a production cluster
+
+
+
+20210216
+
+It's possible that pods are still running, but service is down. 
+- Investigate how to check service health
+- most pods should have service but not mandatary
+- it's possible that a service has internal problem which leads to malfunction (or not working) but it's not reported in anyway. This case cannot be detected in devops system
+
+20210214
+
+Deployment Frequency
+Lead Time for Changes
+Time to Restore Services
+Change Failure Rate
+
+1) reporting database -> deployment metrics
+2) find the git repo for deployment work and find where the deployment events are stored in devPortal
+3) production service down -> up duration
+time to restore service
+Prometheus kubernetes monitoring installation helm chart.
+prometheus helm chart monitoring kubernetes metrics
+test in black cluster
+
+
 20210206
 
 1) unit test coverage (~80% with timestamp) metrics (if can't find it, generate fake ones), NOTES, understand better how query work with prometheus data formate
