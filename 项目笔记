@@ -1,4 +1,23 @@
 
+20210227
+
+* show metrics_type name (ok)
+
+* create a graph for each type
+
+* set default value of git_brach to 'develop' (ok)
+
+* show only last 3 days in report, more data in trend graph (ok)
+
+
+20210225
+
+* Investigate how to show unit tests info that has bad coverage
+
+* simplify legend
+
+* add dropdown list to fileter coverage values
+
 20210224
 
 * check kubeconfig-ci.yaml

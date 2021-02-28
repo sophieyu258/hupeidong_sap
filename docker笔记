@@ -1,0 +1,41 @@
+
+20210220
+
+* run prometheus in docker
+
+docker run -p 9090:9090 prom/prometheus
+
+* run with volumn
+
+sudo docker run -p 9090:9090 -v /home/ubuntu/mytest/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+
+* run 
+
+docker run -p 9115:9115 prom/blackbox-exporter
+
+* start / stop
+
+sudo docker ps -a | grep prom
+
+sudo docker start b6ff073213a2
+
+* enter docker container
+
+sudo docker container exec -it -u root b6ff073213a2 sh
+
+* run grafana in docker
+
+https://grafana.com/docs/grafana/latest/installation/docker/
+
+docker run -d -p 3000:3000 grafana/grafana
+
+default user/pw : admin/admin
+
+
+
+docker build
+
+docker pull
+
+docker run
+

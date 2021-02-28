@@ -1,0 +1,50 @@
+
+20210228
+
+* show metrics_type name in dropdown list, and use its id
+
+SELECT type AS "__text", id AS "__value" FROM public.m_metric_types
+
+* show only last 3 days in report
+
+change
+
+WHERE $__timeFilter("m_build_metric_values".created_at) 
+
+to 
+
+WHERE "m_build_metric_values".created_at > current_date - interval '3 days'
+
+
+
+20210227
+
+* query postgressql directly from grafana, and show in table view
+
+SELECT "m_git_repos".git_repo as "git_repo(Service)",
+"m_build_metric_values".created_at AS "Tested At",
+cast(trim(both '%' from "m_build_metric_values".value) as float) AS "coverage",
+"m_build_infos".git_branch as "git_branch" 
+FROM "m_build_metric_values" 
+join "m_build_infos" on "m_build_metric_values".git_build_id = "m_build_infos".id 
+join "m_git_repos" on "m_build_infos".repo_id = "m_git_repos".id
+WHERE $__timeFilter("m_build_metric_values".created_at) 
+AND "m_build_metric_values".metric_type_id = $metric_type
+AND cast(trim(both '%' from "m_build_metric_values".value) as float) <= $coveragele
+AND cast(trim(both '%' from "m_build_metric_values".value) as float) >= $coveragege
+ORDER BY "m_build_metric_values".created_at desc
+
+* query postgressql directly from grafana, and show in timeseries view
+
+SELECT "m_build_metric_values".created_at AS "time",
+"m_git_repos".git_repo AS metric, 
+cast(trim(both '%' from "m_build_metric_values".value) as float) AS "coverage"
+FROM "m_build_metric_values" 
+join "m_build_infos" on "m_build_metric_values".git_build_id = "m_build_infos".id 
+join "m_git_repos" on "m_build_infos".repo_id = "m_git_repos".id
+WHERE $__timeFilter("m_build_metric_values".created_at) 
+AND "m_build_metric_values".metric_type_id = $metric_type
+AND cast(trim(both '%' from "m_build_metric_values".value) as float) <= $coveragele
+AND cast(trim(both '%' from "m_build_metric_values".value) as float) >= $coveragege
+ORDER BY "m_build_metric_values".created_at desc
+
