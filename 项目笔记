@@ -1,9 +1,44 @@
 
+20210307
+
+* First row of dashbaord : total service # time graph; total build # time graph
+
+* Each metric_type a row of two graps : a pie of last 24 hours; the time series graph (ok)
+
+* UT and API coverage (ok)
+
+20210306
+
+"Relase Management Summary dashboard"
+
+* trend graph show sumary curve of all services by metric_field, 
+
+* for Unit/API coverage, show panels of "total service #", show graph " > 80", " 80 > > 50", " > 50" etc
+
+* service # by day, build # by day
+
+* metric/service % 
+
+
+20210303
+
+* investigate whitesource & fortify etc
+
+* show KPI dashboard which shows only most important metric field
+
+* create a new dashboard (Devops dashboard) for the last two graph, which is affected by repo and branch selection;
+
+* hide repo and branch selection in Relase Management dashboard, since they don't affect the fixed coverage graphs
+
+20210301
+
+* deploy customized Blackbox exporter and get 'restore time'
+
 20210227
 
 * show metrics_type name (ok)
 
-* create a graph for each type
+* create a graph for each type (ok)
 
 * set default value of git_brach to 'develop' (ok)
 
